@@ -81,11 +81,7 @@ export default function SearchAppBar() {
       const data = await response.json();
       setSearchResults(data.results);
       console.log(data)
-      const router = useRouter();
-      router.push({
-      pathname: '/search-results',
-      query: { SearchResults: JSON.stringify(data.results) }, // Pasar los resultados como query
-    });
+      
     } catch (error) {
       console.error('Error fetching data:', error);
     }
