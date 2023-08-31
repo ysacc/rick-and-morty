@@ -131,7 +131,7 @@ export default function SearchAppBar() {
       </AppBar>
       {menuOpen && <IconMenu/>}
       {/* Render search results */}
-      
+      <SearchResults/>
     </Box>
   );
 }
