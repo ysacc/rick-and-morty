@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
 import SearchResults from '../components/SearchResults';
 
-export default function SearchResults() {
+export default function Results() {
   const router = useRouter();
-  const searchResults = JSON.parse(router.query.searchResults || '[]');
+  const searchResultsNew = JSON.parse(router.query.searchResults || '[]');
 
   return (
     <div>
-      <SearchResultsPage searchResults={searchResults} />
+      <SearchResults searchResults={searchResultsNew} />
     </div>
   );
 }
