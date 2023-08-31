@@ -84,7 +84,7 @@ export default function SearchAppBar() {
       const router = useRouter();
       router.push({
       pathname: '/search-results',
-      query: { searchResults: JSON.stringify(data.results) }, // Pasar los resultados como query
+      query: { SearchResults: JSON.stringify(data.results) }, // Pasar los resultados como query
     });
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -131,7 +131,7 @@ export default function SearchAppBar() {
       </AppBar>
       {menuOpen && <IconMenu/>}
       {/* Render search results */}
-      <SearchResults/>
+      {/* <SearchResults/> */}
     </Box>
   );
 }
