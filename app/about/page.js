@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.module.css"
-import styles  from "../About/About.module.css"
+import styles from "../about/About.module.css"
 export const metadata={
     title:"Rick and Morty - About"
 };
