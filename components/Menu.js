@@ -63,13 +63,13 @@ export default function IconMenu() {
           <ListItemText>About</ListItemText>
         </MenuItem>
         </Link>
-        <Link href={"/search-results"}>
-        {/* <MenuItem>
+        <Link href={"/filter"}>
+        <MenuItem>
           <ListItemIcon>
             <IoIosSearch/>
           </ListItemIcon>
-          <ListItemText>Search</ListItemText>
-        </MenuItem> */}
+          <ListItemText>Filter</ListItemText>
+        </MenuItem>
         </Link>
         <Divider />
         <Link href={"https://github.com/ysacc/rick-and-morty"}target='blank'>

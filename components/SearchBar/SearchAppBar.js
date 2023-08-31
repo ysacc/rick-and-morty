@@ -80,7 +80,7 @@ export default function SearchAppBar() {
       const response = await fetch(`https://rickandmortyapi.com/api/character/?species=${encodeURIComponent(searchQuery)}`);
       const data = await response.json();
       setSearchResults(data.results);
-      console.log(data)
+      console.log(data.results)
       
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -127,7 +127,7 @@ export default function SearchAppBar() {
       </AppBar>
       {menuOpen && <IconMenu/>}
       {/* Render search results */}
-      {/* <SearchResults/> */}
+      <SearchResults results={searchResults} />
     </Box>
   );
 }
