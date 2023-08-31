@@ -13,8 +13,8 @@ import Cloud from '@mui/icons-material/Cloud';
 import SvgIcon from '@mui/material/SvgIcon';
 import { createSvgIcon } from '@mui/material/utils';
 import Link from 'next/link';
-import { IoMdPerson ,IoIosNuclear,IoLogoGithub,IoLogoNodejs} from "react-icons/io";
-
+import { IoMdPerson ,IoIosSearch,IoIosNuclear,IoLogoGithub,IoLogoNodejs} from "react-icons/io";
+import styles from './styles.css'
 function HomeIcon(props) {
     return (
       <SvgIcon {...props}>
@@ -44,7 +44,7 @@ export default function IconMenu() {
           <ListItemIcon>
             <IoMdPerson/>
           </ListItemIcon>
-          <ListItemText style={{ textDecoration: 'none' }}>Log Out</ListItemText>
+          <ListItemText className={styles.menuItemText}>Log Out</ListItemText>
         </MenuItem>
         </Link>
         <Link href={"/characters"}>
@@ -63,8 +63,16 @@ export default function IconMenu() {
           <ListItemText>About</ListItemText>
         </MenuItem>
         </Link>
+        <Link href={"/search-results"}>
+        {/* <MenuItem>
+          <ListItemIcon>
+            <IoIosSearch/>
+          </ListItemIcon>
+          <ListItemText>Search</ListItemText>
+        </MenuItem> */}
+        </Link>
         <Divider />
-        <Link href={"http://github.com/ysacc"}>
+        <Link href={"https://github.com/ysacc/rick-and-morty"}target='blank'>
         <MenuItem>
           <ListItemIcon>
             <IoLogoGithub />

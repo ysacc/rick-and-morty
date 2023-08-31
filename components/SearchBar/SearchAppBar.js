@@ -12,7 +12,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import SimpleListMenu from '../Menu';
 import IconMenu from '../Menu';
 import '@/components/SearchBar/SearchBar.css';
-
+import SearchResults from '../SearchResults';
+import { useRouter } from 'next/router';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -70,11 +71,21 @@ export default function SearchAppBar() {
 
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
-
+    console.log('Searching for:', searchQuery);
+    if (searchQuery.trim() === '') {
+      return; // No realizar la búsqueda si el término está vacío
+    }
+  
     try {
-      const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${searchQuery}`);
+      const response = await fetch(`https://rickandmortyapi.com/api/character/?species=${encodeURIComponent(searchQuery)}`);
       const data = await response.json();
       setSearchResults(data.results);
+      console.log(data)
+      const router = useRouter();
+      router.push({
+      pathname: '/search-results',
+      query: { searchResults: JSON.stringify(data.results) }, // Pasar los resultados como query
+    });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -105,19 +116,22 @@ export default function SearchAppBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  onKeyPress={(event) => {
+                    if (event.key === 'Enter') {
+                      handleSearchSubmit(event);
+                    }
+                  }}
+                />
           </Search>
         </Toolbar>
       </AppBar>
       {menuOpen && <IconMenu/>}
       {/* Render search results */}
-      <div>
-        {searchResults.map((result) => (
-          <div key={result.id}>{result.name}</div>
-        ))}
-      </div>
+      
     </Box>
   );
 }

@@ -1,7 +1,7 @@
 import Cards from "@/components/Cards";
 import "./style.css"
 async function loadCards(){
-    const res= await fetch('https://rickandmortyapi.com/api/character/?page=19');
+    const res= await fetch(`https://rickandmortyapi.com/api/character/?species=human`);
     const data = await res.json();
     // await newPromise((resolve)=>setTimeout(resolve,3000));
     return data;
@@ -11,7 +11,7 @@ export default async function Search(){
     // console.log(cards)
     return(
         <div className="characters">
-            <h1 className="title">Characters</h1>
+            <h1 className="title">Characters Humans</h1>
             <div className="card">
             {cards.results.map((card) => (
                 <Cards  card={card} key={card.id}/>
